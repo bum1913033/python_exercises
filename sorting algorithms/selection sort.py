@@ -1,35 +1,29 @@
-# import
-import random
+# Given an unsorted array of size N, use selection sort to sort arr[] in increasing order.
 
-# create a card variable to store a list of 10 integers
-cards = list([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-# randomize the position of integers as if shuffling a deck of cards
-random.shuffle(cards)
-# print the current state of cards list
-print(cards)
+my_list = [4, 1, 3, 9, 7]
+print("initial:", my_list)
 
-# get length of cards list and assign to deck_size variable
-deck_size = cards.__len__()
-# print deck_size
-print(deck_size)
+# n = 5
+n = len(my_list)
 
-# create a function to demonstrate selection sort
-def selection_sort(cards, deck_size):
-    # iterate over range of deck_size
-    for i in range(deck_size):
-        # assign minimum index to element at cards[i]
+# output: 1 3 4 7 9
+
+# define selection sort function
+def selection_sort(my_list, n):
+    for i in range(n):
+        # assign min index for this iteration, i is the selector.
         min_index = i
-        # iterate over range of i+1 and deck_size
-        for j in range(i+1, deck_size):
-            # if element at cards[j] is less than element at cards [min_index] then
-            if cards[j] < cards[min_index]:
-                # assign minimum index to element at cards[j]
+        # j is the index after i, used to compare if preceeding element is less than the following element.
+        for j in range(i + 1, n):
+            if my_list[j] < my_list[min_index]:
                 min_index = j
-        # swap position of elements
-        (cards[i], cards[min_index]) = (cards[min_index], cards[i])
-    # return sorted list of cards
-    return cards
+        # swap
+        (my_list[i], my_list[min_index]) = (my_list[min_index], my_list[i])
+        # print at each iteration
+        print("update:\t", my_list)
+    # return statement
+    return my_list
 
-# print
-print("Sorted deck of cards:", selection_sort(cards, deck_size))
 
+# final
+print("sorted:\t", selection_sort(my_list, n))
